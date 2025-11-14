@@ -50,20 +50,22 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 40px;
   margin-left: 8px;
-  margin-right: 8px;
-  width: 100%;
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  gap: 2px;
+  transform: translateY(-1px);
 }
 
 .channel-preview__content-top {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   margin: 0;
   height: auto;
-  margin-bottom: 2px;
-  gap: 8px;
+  padding-right: 8px;
+  line-height: 1;
 }
 
 .channel-preview__content-name {
@@ -78,6 +80,7 @@
   white-space: nowrap;
   flex: 1;
   min-width: 0;
+  padding-right: 8px;
 }
 
 .str-chat.dark .channel-preview__content-name {
@@ -92,6 +95,7 @@
   font-weight: 500;
   white-space: nowrap;
   flex-shrink: 0;
+  margin-left: auto;
 }
 
 .channel-preview__content-message {
