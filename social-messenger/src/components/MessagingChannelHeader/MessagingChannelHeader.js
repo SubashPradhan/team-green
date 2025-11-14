@@ -5,7 +5,7 @@ import './MessagingChannelHeader.css';
 
 import { TypingIndicator } from '../TypingIndicator/TypingIndicator';
 
-import { ChannelInfoIcon, ChannelSaveIcon, getCleanImage, getRandomImage, HamburgerIcon } from '../../assets';
+import { ChannelInfoIcon, ChannelSaveIcon, getCleanImage, getDeterministicImage, HamburgerIcon } from '../../assets';
 
 const getAvatarGroup = (members, channelName = '') => {
   if (members.length === 1) {
@@ -104,8 +104,8 @@ const getAvatarGroup = (members, channelName = '') => {
   }
 
   // Return a placeholder avatar when there are no members (e.g., solo channel)
-  // Use a random profile image as fallback
-  const fallbackImage = getRandomImage();
+  // Use a deterministic profile image as fallback based on channel name
+  const fallbackImage = getDeterministicImage(channelName || 'Channel');
   return (
     <div className='messaging__channel-header__avatars'>
       <Avatar 

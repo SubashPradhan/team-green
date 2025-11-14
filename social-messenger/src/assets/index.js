@@ -70,6 +70,13 @@ const hashString = (str) => {
   return Math.abs(hash);
 };
 
+// Get a deterministic image based on a string (channel name, user ID, etc.)
+export const getDeterministicImage = (identifier) => {
+  if (!identifier) identifier = 'default';
+  const index = hashString(identifier) % 20;
+  return randomImages[index];
+};
+
 export const getCleanImage = (member) => {
   // Check if member has an existing image that matches our image set
   let cleanImage = member.user?.image || '';

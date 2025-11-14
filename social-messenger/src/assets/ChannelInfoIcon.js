@@ -15,14 +15,8 @@ export const ChannelInfoIcon = ({ isEditing, setIsEditing }) => (
     }}
   >
     <path
-      d='M12 2C17.52 2 22 6.48 22 12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12C2 6.48 6.48 2 12 2Z'
-      fill='#858688'
-    />
-    <path
-      fillRule='evenodd'
-      clipRule='evenodd'
-      d='M13 8L13 6H11V8H13ZM13 10H11V18H13V10Z'
-      fill='white'
+      d='M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z'
+      fill='var(--text-secondary)'
     />
   </svg>
 );

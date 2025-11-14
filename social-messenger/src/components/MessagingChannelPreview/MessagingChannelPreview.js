@@ -1,19 +1,8 @@
 import React, { useContext } from 'react';
 import { Avatar, ChatContext } from 'stream-chat-react';
-import { getCleanImage, getRandomImage } from '../../assets';
+import { getCleanImage, getDeterministicImage } from '../../assets';
 
 import './MessagingChannelPreview.css';
-
-// Generate a consistent hash from a string (for deterministic avatar assignment)
-const hashString = (str) => {
-  let hash = 0;
-  for (let i = 0; i < str.length; i++) {
-    const char = str.charCodeAt(i);
-    hash = ((hash << 5) - hash) + char;
-    hash = hash & hash;
-  }
-  return Math.abs(hash);
-};
 
 const getAvatarGroup = (members, channelName = '') => {
   if (members.length === 1) {
@@ -109,7 +98,7 @@ const getAvatarGroup = (members, channelName = '') => {
 
   // Return a placeholder avatar when there are no members
   // Use a deterministic image based on channel name
-  const fallbackImage = getRandomImage();
+  const fallbackImage = getDeterministicImage(channelName || 'Channel');
   return <Avatar image={fallbackImage} name={channelName || 'Channel'} size={40} />;
 };
 

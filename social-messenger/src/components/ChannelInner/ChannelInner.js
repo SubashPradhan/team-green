@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { logChatPromiseExecution } from 'stream-chat';
 import {
+  Avatar,
   MessageList,
   MessageInput,
   Thread,
@@ -9,8 +10,18 @@ import {
 } from 'stream-chat-react';
 
 import { MessagingChannelHeader, MessagingInput } from '../../components';
+import { getCleanImage } from '../../assets';
 
 import { GiphyContext } from '../../App';
+
+// Custom Avatar component that uses our profile pictures
+const CustomAvatar = (props) => {
+  const { user, ...rest } = props;
+  const member = { user };
+  const avatarImage = getCleanImage(member);
+  
+  return <Avatar {...rest} image={avatarImage} />;
+};
 
 export const ChannelInner = (props) => {
   const { theme, toggleMobile } = props;
@@ -60,10 +71,10 @@ export const ChannelInner = (props) => {
     <>
       <Window>
         <MessagingChannelHeader theme={theme} toggleMobile={toggleMobile} />
-        <MessageList messageActions={actions} />
+        <MessageList messageActions={actions} Avatar={CustomAvatar} />
         <MessageInput focus overrideSubmitHandler={overrideSubmitHandler} />
       </Window>
-      <Thread Input={MessagingInput} />
+      <Thread Input={MessagingInput} Avatar={CustomAvatar} />
     </>
   );
 };
