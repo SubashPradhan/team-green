@@ -10,7 +10,7 @@
     "react-app-polyfill": "2.0.0",
     "react-dom": "^18.2.0",
     "react-file-utils": "^1.2.0",
-    "react-scripts": "3.3.0",
+    "react-scripts": "5.0.1",
     "stream-chat": "^7.1.0",
     "stream-chat-react": "^10.1.1"
   },
@@ -29,8 +29,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "resolutions": {
-    "react-dev-utils": "10.1.0"
-  }
+  ]
 }

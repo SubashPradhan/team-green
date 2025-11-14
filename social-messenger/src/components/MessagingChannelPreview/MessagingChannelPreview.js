@@ -4,7 +4,7 @@ import { getCleanImage } from '../../assets';
 
 import './MessagingChannelPreview.css';
 
-const getAvatarGroup = (members) => {
+const getAvatarGroup = (members, channelName = '') => {
   if (members.length === 1) {
     return <Avatar image={getCleanImage(members[0])} name={members[0].user?.id} size={40} />;
   }
@@ -96,7 +96,8 @@ const getAvatarGroup = (members) => {
     );
   }
 
-  return null;
+  // Return a placeholder avatar when there are no members
+  return <Avatar name={channelName || 'Channel'} size={40} />;
 };
 
 const getTimeStamp = (channel) => {
@@ -154,7 +155,7 @@ const MessagingChannelPreview = (props) => {
         setActiveChannel(channel);
       }}
     >
-      {getAvatarGroup(members)}
+      {getAvatarGroup(members, channel.data.name)}
       <div className='channel-preview__content-wrapper'>
         <div className='channel-preview__content-top'>
           <p className='channel-preview__content-name'>

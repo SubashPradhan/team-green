@@ -13,7 +13,7 @@ const MessagingChannelList = ({ children, error = false, loading, onCreateChanne
 
   useEffect(() => {
     const getDemoChannel = async (client) => {
-      const channel = client.channel('messaging', 'first', { name: 'Social Demo', demo: 'social' });
+      const channel = client.channel('messaging', 'first', { name: 'Demo Team Green', demo: 'social' });
       await channel.watch();
       await channel.addMembers([client.user.id]);
       setActiveChannel(channel);
@@ -23,6 +23,29 @@ const MessagingChannelList = ({ children, error = false, loading, onCreateChanne
       getDemoChannel(client);
     }
   }, [loading]); // eslint-disable-line
+
+  // Update existing "Social Demo" channel to "Demo Team Green"
+  useEffect(() => {
+    const updateChannelName = async () => {
+      try {
+        const channel = client.channel('messaging', 'first');
+        await channel.watch();
+        
+        if (channel.data.name === 'Social Demo') {
+          await channel.update(
+            { name: 'Demo Team Green' },
+            { text: 'Channel name updated to Demo Team Green' }
+          );
+        }
+      } catch (error) {
+        console.log('Channel update error:', error);
+      }
+    };
+
+    if (client && !loading) {
+      updateChannelName();
+    }
+  }, [client, loading]); // eslint-disable-line
 
   const ListHeaderWrapper = ({ children }) => {
     return (

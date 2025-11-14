@@ -7,7 +7,7 @@ import { TypingIndicator } from '../TypingIndicator/TypingIndicator';
 
 import { ChannelInfoIcon, ChannelSaveIcon, getCleanImage, HamburgerIcon } from '../../assets';
 
-const getAvatarGroup = (members) => {
+const getAvatarGroup = (members, channelName = '') => {
   if (members.length === 1) {
     return (
       <div className='messaging__channel-header__avatars'>
@@ -103,7 +103,15 @@ const getAvatarGroup = (members) => {
     );
   }
 
-  return null;
+  // Return a placeholder avatar when there are no members (e.g., solo channel)
+  return (
+    <div className='messaging__channel-header__avatars'>
+      <Avatar 
+        name={channelName || 'Channel'} 
+        size={40}
+      />
+    </div>
+  );
 };
 
 const MessagingChannelHeader = (props) => {
@@ -140,6 +148,11 @@ const MessagingChannelHeader = (props) => {
   }, [isEditing]);
 
   useEffect(() => {
+    // Update local state when channel name changes
+    setChannelName(channel?.data.name || '');
+  }, [channel?.data.name]);
+
+  useEffect(() => {
     if (!channelName) {
       setTitle(
         members.map((member) => member.user?.name || member.user?.id || 'Unnamed User').join(', '),
@@ -172,7 +185,7 @@ const MessagingChannelHeader = (props) => {
       <div id='mobile-nav-icon' className={`${props.theme}`} onClick={() => props.toggleMobile()}>
         <HamburgerIcon />
       </div>
-      {getAvatarGroup(members)}
+      {getAvatarGroup(members, channelName)}
       {!isEditing ? (
         <div className='channel-header__name'>{channelName || title}</div>
       ) : (
@@ -180,7 +193,7 @@ const MessagingChannelHeader = (props) => {
       )}
       <div className='messaging__channel-header__right'>
         <TypingIndicator />
-        {channelName !== 'Social Demo' &&
+        {channelName !== 'Demo Application' &&
           (!isEditing ? <ChannelInfoIcon {...{ isEditing, setIsEditing }} /> : <ChannelSaveIcon />)}
       </div>
     </div>
