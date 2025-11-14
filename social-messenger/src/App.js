@@ -30,7 +30,7 @@ const skipNameImageSet = urlParams.get('skip_name_image_set') || false;
 
 const filters = { type: 'messaging', members: { $in: [user] } };
 
-const options = { state: true, watch: true, presence: true, limit: 8 };
+const options = { state: true, watch: true, presence: true, limit: 30 };
 
 const sort = {
   last_message_at: -1,

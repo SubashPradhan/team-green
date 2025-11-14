@@ -4,31 +4,44 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  background: #ffffff;
-  box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.01387);
-  border-radius: 10px 10px 0px 0px;
+  background: var(--bg-tertiary);
+  box-shadow: none;
+  border-radius: 16px 16px 0px 0px;
 }
 
 .str-chat.dark .messaging-create-channel {
-  background: #282a2d;
+  background: var(--bg-tertiary);
 }
 
 .messaging-create-channel header {
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0px 7px 9px rgba(0, 0, 0, 0.03), 0px 1px 0px rgba(0, 0, 0, 0.03);
-  transform: matrix(1, 0, 0, 1, 0, 0);
-  border-radius: 10px 10px 0px 0px;
+  background: var(--bg-tertiary);
+  box-shadow: none;
+  border-bottom: none;
+  border-radius: 16px 16px 0px 0px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10px 0 25px;
+  padding: 16px 20px;
+  min-height: 68px;
+  position: relative;
+}
+
+.messaging-create-channel header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  right: 20px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+  opacity: 0.3;
 }
 
 .str-chat.dark .messaging-create-channel header {
-  background: #3e3e41;
-  box-shadow: 0px 7px 9px rgba(0, 0, 0, 0.03), 0px 1px 0px rgba(0, 0, 0, 0.03);
-  color: rgba(255, 255, 255, 0.9);
-  border-radius: 10px 10px 0px 0px;
+  background: var(--bg-tertiary);
+  box-shadow: none;
+  color: var(--text-primary);
+  border-radius: 16px 16px 0px 0px;
   height: auto;
 }
 
@@ -47,10 +60,11 @@
 
 .messaging-create-channel__left-text {
   margin-right: 10px;
-  font-family: Helvetica Neue, sans-serif;
-  font-size: 17px;
-  color: #000000;
-  opacity: 0.5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: -0.01em;
 }
 
 .messaging-create-channel main {
@@ -69,28 +83,40 @@
 }
 
 .messaging-create-channel__user {
-  color: #000000;
-  background: #f1f1f1;
-  opacity: 0.9;
+  color: var(--text-primary);
+  background: var(--bg-secondary);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 6px 12px 6px 12px;
+  padding: 6px 12px;
   border-radius: 20px;
   cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px var(--shadow-sm);
+}
+
+.messaging-create-channel__user:hover {
+  background: var(--accent);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px var(--shadow-md);
 }
 
 .messaging-create-channel__user svg path {
-  fill: #000000;
+  fill: var(--text-primary);
 }
 
-.str-chat.dark .messaging-create-channel__user svg path {
+.messaging-create-channel__user:hover svg path {
   fill: #ffffff;
 }
 
+.str-chat.dark .messaging-create-channel__user svg path {
+  fill: var(--text-primary);
+}
+
 .str-chat.dark .messaging-create-channel__user {
-  color: white;
-  background: #2c2c30;
+  color: var(--text-primary);
+  background: var(--bg-secondary);
   margin: 2px;
 }
 
@@ -107,40 +133,41 @@
   border: none;
   outline: none;
   min-width: 215px;
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 16px;
 }
 
 .str-chat.dark .messaging-create-channel__input {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-primary);
 }
 
 .messaging-create-channel__input::placeholder {
-  font-size: 17px;
-  color: #000000;
-  opacity: 0.5;
+  font-size: 16px;
+  color: var(--text-muted);
 }
 
 .str-chat.dark .messaging-create-channel__input::placeholder {
-  color: #ffffff;
+  color: var(--text-muted);
 }
 
 .messaging-create-channel__user-results {
   display: flex;
   flex-direction: column;
   max-width: 330px;
-  background: #f1f1f1;
-  opacity: 0.9;
-  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.07);
-  border-radius: 10px;
+  background: var(--bg-secondary);
+  box-shadow: 0 8px 24px var(--shadow-md), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
   overflow-y: auto;
   list-style: none;
-  padding: 0;
+  padding: 4px;
   margin-left: 4px;
   margin-top: 4px;
 }
 
 .str-chat.dark .messaging-create-channel__user-results {
-  background: #282a2d;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+  background: var(--bg-secondary);
+  box-shadow: 0 8px 24px var(--shadow-md), 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 .messaging-create-channel__user-result {
@@ -149,16 +176,18 @@
   align-items: center;
   justify-content: space-between;
   margin: 0;
-  padding: 8px 8px;
+  padding: 8px 12px;
   cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
 
 .messaging-create-channel__user-result.focused {
-  background: #ffffff;
+  background: var(--bg-tertiary);
 }
 
 .str-chat.dark .messaging-create-channel__user-result.focused {
-  background: #3e3e41;
+  background: var(--bg-tertiary);
 }
 
 .messaging-create-channel__user-result.empty {
@@ -175,27 +204,27 @@
   bottom: 14px;
   background: #20e070;
   border-radius: 8px;
-  border: 2px solid #f1f1f1;
+  border: 2px solid var(--bg-secondary);
   height: 16px;
   width: 16px;
 }
 
 .str-chat.dark .messaging-create-channel__user-result-online {
-  border: 2px solid #282a2d;
+  border: 2px solid var(--bg-secondary);
   opacity: 1;
 }
 
 .messaging-create-channel__user-result:hover {
-  background: #ffffff;
-  transition: background, border 0.1s ease-in-out;
+  background: var(--bg-tertiary);
+  transition: all 0.2s ease;
 }
 
 .messaging-create-channel__user-result:hover .messaging-create-channel__user-result-online {
-  border-color: #ffffff;
+  border-color: var(--bg-tertiary);
 }
 
 .str-chat.dark .messaging-create-channel__user-result:hover .messaging-create-channel__user-result-online {
-  border-color: #3e3e41;
+  border-color: var(--bg-tertiary);
 }
 
 .messaging-create-channel__user-result__details {
@@ -204,37 +233,36 @@
 }
 
 .messaging-create-channel__user-result__details span:first-of-type {
-  font-weight: 500;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  letter-spacing: -0.01em;
 }
 
 .messaging-create-channel__user-result__details__last-seen {
   font-weight: normal;
   font-size: 13px;
   line-height: 16px;
+  color: var(--text-muted);
 }
 
 /* modifiers dark theme */
 
 .str-chat.dark .messaging-create-channel__left-text {
-  color: #ffffff;
+  color: var(--text-secondary);
 }
 
 .str-chat.dark .messaging-create-channel__user-result:hover,
 .str-chat.dark .messaging-create-channel__user-result.selected {
-  background: #3e3e41;
+  background: var(--bg-tertiary);
 }
 
 .str-chat.dark .messaging-create-channel__user-result__details {
-  color: white;
-}
-
-.str-chat.dark .messaging-create-channel__user-result:hover,
-.str-chat.dark .messaging-create-channel__user-result.selected {
-  background: #3e3e41;
+  color: var(--text-primary);
 }
 
 .str-chat.dark .messaging-create-channel__user-result__details__last-seen {
-  color: #858688;
+  color: var(--text-muted);
 }
 
 /* modifiers page structure */
@@ -249,18 +277,29 @@
 .create-channel-button {
   right: 10px;
   max-width: 111px;
-  height: 40px;
+  height: 44px;
   border: none;
   outline: none;
-  background: #005fff;
-  border-radius: 20px;
-  font-family: Helvetica Neue, sans-serif;
-  font-weight: bold;
+  background: var(--accent);
+  border-radius: 22px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 600;
   font-size: 15px;
   line-height: 18px;
   color: #ffffff;
   cursor: pointer;
   flex: 1;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(167, 139, 250, 0.3);
+}
+
+.create-channel-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(167, 139, 250, 0.4);
+}
+
+.create-channel-button:active {
+  transform: translateY(0);
 }
 
 .users-input-container {
