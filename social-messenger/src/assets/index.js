@@ -80,27 +80,34 @@ export const getDeterministicImage = (identifier) => {
 };
 
 export const getCleanImage = (member) => {
-  // Check if member has an existing image that matches our image set
-  let cleanImage = member.user?.image || '';
-  const cleanIndex = randomImages.findIndex((image) => image.includes(cleanImage?.slice?.(1, -14)));
-
-  // If no matching image found, assign one based on user ID (deterministic)
-  if (cleanIndex === -1) {
-    const userId = member.user?.id || member.user?.name || 'default';
-    const index = hashString(userId) % 20;
-    cleanImage = randomImages[index];
-  } else {
-    cleanImage = randomImages[cleanIndex];
+  const userImage = member.user?.image;
+  
+  // Debug logging
+  if (member.user?.id === 'testUser' || member.user?.name?.includes('Test')) {
+    console.log('DEBUG testUser:', {
+      userId: member.user?.id,
+      userName: member.user?.name,
+      userImage: userImage,
+      willReturn: userImage && typeof userImage === 'string' && userImage.trim() !== '' ? userImage : 'fallback'
+    });
   }
-
+  
+  // If user has an image, return it directly - let the Avatar component handle it
+  if (userImage && typeof userImage === 'string' && userImage.trim() !== '') {
+    return userImage;
+  }
+  
   // Special assignments for specific users
   if (member.user?.name === 'Jen Alexander') {
-    cleanImage = randomImages[11];
+    return randomImages[11];
   }
 
   if (member.user?.name === 'Kevin Rosen') {
-    cleanImage = randomImages[19];
+    return randomImages[19];
   }
 
-  return cleanImage;
+  // Fallback: assign a deterministic random image based on user ID
+  const userId = member.user?.id || member.user?.name || 'default';
+  const index = hashString(userId) % 20;
+  return randomImages[index];
 };
