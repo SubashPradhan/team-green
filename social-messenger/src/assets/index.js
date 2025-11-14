@@ -27,7 +27,9 @@ export { CreateChannelIcon } from './CreateChannelIcon';
 export { EmojiIcon } from './EmojiIcon';
 export { HamburgerIcon } from './HamburgerIcon';
 export { LightningBoltSmall } from './LightningBoltSmall';
+export { MoonIcon } from './MoonIcon';
 export { SendIcon } from './SendIcon';
+export { SunIcon } from './SunIcon';
 export { XButton } from './XButton';
 export { XButtonBackground } from './XButtonBackground';
 

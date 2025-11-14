@@ -1,5 +1,5 @@
 .str-chat__messaging-input {
-  background: var(--bg-tertiary);
+  background: transparent;
   box-shadow: none;
   display: flex;
   align-items: center;
@@ -20,7 +20,7 @@
 }
 
 .str-chat.dark .str-chat__messaging-input {
-  background: var(--bg-tertiary);
+  background: transparent;
   border-top: none;
 }
 
@@ -37,22 +37,27 @@
   height: fit-content;
   z-index: 100;
   border-radius: 26px;
-  background: var(--bg-secondary);
+  background: var(--bg-tertiary);
   border: none;
   transition: all 0.2s ease-in-out;
   position: relative;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  box-shadow: none;
 }
 
 .str-chat.dark .messaging-input__input-wrapper {
   border: none;
-  background: var(--bg-secondary);
+  background: var(--bg-tertiary);
+  box-shadow: none;
 }
 
 .str-chat__messaging-input .messaging-input__input-wrapper:focus-within {
-  background: var(--bg-secondary);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
-  transform: translateY(-1px);
+  background: var(--bg-tertiary);
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+.str-chat.dark .str-chat__messaging-input .messaging-input__input-wrapper:focus-within {
+  background: var(--bg-tertiary);
+  box-shadow: inset 0 0 0 1px var(--accent);
 }
 
 .str-chat__messaging-input > *:not(:first-of-type) {

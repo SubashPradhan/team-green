@@ -104,7 +104,7 @@ body::-webkit-scrollbar-thumb {
 
 .messaging.str-chat.dark .str-chat__list {
   padding: 0 30px 0;
-  background: var(--bg-tertiary);
+  background: transparent;
 }
 
 .str-chat-channel.messaging .str-chat__main-panel {

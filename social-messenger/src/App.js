@@ -112,6 +112,10 @@ const App = () => {
   }, []);
 
   const toggleMobile = () => setMobileNav(!isMobileNavVisible);
+  
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
 
   const giphyContextValue = { giphyState, setGiphyState };
 
@@ -125,7 +129,12 @@ const App = () => {
           sort={sort}
           options={options}
           List={(props) => (
-            <MessagingChannelList {...props} onCreateChannel={() => setIsCreating(!isCreating)} />
+            <MessagingChannelList 
+              {...props} 
+              onCreateChannel={() => setIsCreating(!isCreating)}
+              theme={theme}
+              toggleTheme={toggleTheme}
+            />
           )}
           Preview={(props) => <MessagingChannelPreview {...props} {...{ setIsCreating }} />}
         />

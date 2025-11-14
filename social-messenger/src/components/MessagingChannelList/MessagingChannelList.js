@@ -4,10 +4,10 @@ import { Avatar, useChatContext } from 'stream-chat-react';
 import './MessagingChannelList.css';
 import { SkeletonLoader } from './SkeletonLoader';
 
-import { CreateChannelIcon } from '../../assets';
+import { CreateChannelIcon, MoonIcon, SunIcon } from '../../assets';
 import streamLogo from '../../assets/stream.png';
 
-const MessagingChannelList = ({ children, error = false, loading, onCreateChannel }) => {
+const MessagingChannelList = ({ children, error = false, loading, onCreateChannel, theme = 'dark', toggleTheme }) => {
   const { client, setActiveChannel } = useChatContext();
   const { id, image = streamLogo, name = 'Example User' } = client.user || {};
 
@@ -53,6 +53,13 @@ const MessagingChannelList = ({ children, error = false, loading, onCreateChanne
         <div className='messaging__channel-list__header'>
           <Avatar image={image} name={name} size={40} />
           <div className='messaging__channel-list__header__name'>{name || id}</div>
+          <button 
+            className='messaging__channel-list__header__theme-toggle' 
+            onClick={toggleTheme}
+            title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+          >
+            {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+          </button>
           <button className='messaging__channel-list__header__button' onClick={onCreateChannel}>
             <CreateChannelIcon />
           </button>
