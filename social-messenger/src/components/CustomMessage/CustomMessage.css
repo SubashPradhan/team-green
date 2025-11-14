@@ -225,3 +225,15 @@ span.react-images__footer__count.react-images__footer__count--isModal {
     left: 75vw;
   }
 }
+
+/* Hide the glowing indicator dots on message avatars */
+.str-chat__avatar::after,
+.str-chat__message-simple__avatar::after {
+  display: none !important;
+}
+
+/* Also hide any other read receipt indicators with glow */
+.str-chat__message-status,
+.str-chat__message-simple-status {
+  display: none !important;
+}

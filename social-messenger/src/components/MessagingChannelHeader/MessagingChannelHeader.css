@@ -1,5 +1,5 @@
 .messaging__channel-header {
-  background: var(--bg-secondary);
+  background: var(--bg-tertiary);
   border-bottom: none;
   border-radius: 16px 16px 0px 0px;
   display: flex;
@@ -33,7 +33,7 @@
 }
 
 .str-chat.dark .messaging__channel-header {
-  background: var(--bg-secondary);
+  background: var(--bg-tertiary);
   border-bottom: none;
 }
 
