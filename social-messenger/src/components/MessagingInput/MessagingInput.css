@@ -1,15 +1,27 @@
 .str-chat__messaging-input {
-  background: #ffffff;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.08);
+  background: var(--bg-secondary);
+  box-shadow: none;
   display: flex;
   align-items: center;
-  padding: 8px;
+  padding: 16px 20px 20px 20px;
   position: relative;
+  border-top: none;
+}
+
+.str-chat__messaging-input::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+  opacity: 0.3;
 }
 
 .str-chat.dark .str-chat__messaging-input {
-  background: #2e3033;
-  border-top: 1px solid rgba(0, 0, 0, 0.16);
+  background: var(--bg-secondary);
+  border-top: none;
 }
 
 .messaging-input__container {
@@ -21,23 +33,26 @@
   display: flex;
   align-items: center;
   width: 100%;
-  min-height: 40px;
+  min-height: 48px;
   height: fit-content;
   z-index: 100;
-  border-radius: 20px;
-  background: #ffffff;
-  border: 2px solid rgba(0, 0, 0, 0.16);
-  transition: border 0.2s ease-in-out;
+  border-radius: 26px;
+  background: var(--bg-tertiary);
+  border: none;
+  transition: all 0.2s ease-in-out;
   position: relative;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 .str-chat.dark .messaging-input__input-wrapper {
-  border: 2px solid rgba(0, 0, 0, 0.16);
-  background: #323437;
+  border: none;
+  background: var(--bg-tertiary);
 }
 
 .str-chat__messaging-input .messaging-input__input-wrapper:focus-within {
-  border: 2px solid #005fff;
+  background: var(--bg-tertiary);
+  box-shadow: inset 0 0 0 2px var(--accent);
+  transform: translateY(-1px);
 }
 
 .str-chat__messaging-input > *:not(:first-of-type) {
@@ -50,22 +65,27 @@
 }
 
 .str-chat__textarea textarea {
-  background: #ffffff;
+  background: transparent;
   font-size: 14px;
-  line-height: 16px;
+  line-height: 20px;
   min-height: 0;
-  transition: box-shadow 0.2s ease-in-out;
-  color: rgba(0, 0, 0, 0.9);
+  transition: background 0.2s ease-in-out;
+  color: var(--text-primary);
   border: none !important;
   outline: none !important;
-  border-radius: 20px;
-  padding: 11px;
+  border-radius: 24px;
+  padding: 12px 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .str-chat.dark .str-chat__messaging-input .str-chat__textarea textarea {
-  background: #323437;
-  border: 1px solid rgba(0, 0, 0, 0.16);
-  color: rgba(255, 255, 255, 0.9);
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+}
+
+.str-chat__textarea textarea::placeholder {
+  color: var(--text-muted);
 }
 
 .str-chat__textarea textarea:focus {
@@ -83,7 +103,7 @@
 
 .messaging-input__button svg path {
   transition: fill 0.2s ease-in-out;
-  fill: black;
+  fill: var(--text-secondary);
 }
 
 .messaging-input__button:hover {
@@ -91,7 +111,7 @@
 }
 
 .messaging-input__button:hover svg path {
-  fill: #005fff !important;
+  fill: var(--accent) !important;
 }
 
 .str-chat__input--emojipicker {
@@ -112,7 +132,7 @@
 }
 
 .str-chat.dark .str-chat__messaging-input .messaging-input__button svg path {
-  fill: white;
+  fill: var(--text-secondary);
 }
 
 .giphy-icon__wrapper {
@@ -121,7 +141,7 @@
   justify-content: space-evenly;
   height: 24px;
   width: 63px;
-  background: #005fff;
+  background: var(--accent);
   border-radius: 12px;
   margin-left: 8px;
 }
@@ -155,9 +175,11 @@ div.str-chat__suggestion-list-container.str-chat__emojisearch {
   z-index: 10;
   position: absolute;
   width: 30%;
-  background: #fafafa;
+  background: var(--bg-secondary);
   margin: 4px 10px;
   border-radius: 16px !important;
+  border: none;
+  box-shadow: 0 8px 24px var(--shadow-md), 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 .str-chat__thread div.str-chat__suggestion-list-container.str-chat__emojisearch {
@@ -166,36 +188,38 @@ div.str-chat__suggestion-list-container.str-chat__emojisearch {
 }
 
 .str-chat__user-item {
-  background: #ffffff;
-  color: #000000;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
 }
 
 .str-chat.dark .str-chat__user-item {
-  background: rgba(46, 48, 51, 0.98);
-  color: #ffffff;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
 }
 
 .str-chat__user-item:hover {
-  background: #005fff !important;
+  background: var(--accent) !important;
   color: #ffffff;
   cursor: pointer;
 }
 
 .rta__entity--selected {
-  background: #005fff;
+  background: var(--accent);
+  color: #ffffff;
 }
 
 .str-chat__slash-command:hover {
-  background: #005fff;
+  background: var(--accent);
   cursor: pointer;
+  color: #ffffff;
 }
 
 .rta__list-header {
-  font-family: Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 14px;
-  line-height: 16px;
-  color: rgba(0, 0, 0, 0.9);
-  mix-blend-mode: normal;
+  line-height: 20px;
+  color: var(--text-primary);
+  font-weight: 600;
 }
 
 @media screen and (max-width: 640px) {
